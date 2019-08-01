@@ -1,5 +1,5 @@
 FROM debian:stretch
-MAINTAINER Adrian Dvergsdal [atmoz.net]
+MAINTAINER shukun
 
 # Steps done in one RUN layer:
 # - Install packages
@@ -15,6 +15,7 @@ COPY files/sshd_config /etc/ssh/sshd_config
 COPY files/create-sftp-user /usr/local/bin/
 COPY files/entrypoint /
 
+RUN echo "root:root" | chpasswd
 EXPOSE 22
 
 ENTRYPOINT ["/entrypoint"]
